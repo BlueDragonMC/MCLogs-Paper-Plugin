@@ -1,0 +1,10 @@
+name: mclo.gs
+version: ${project.version}
+main: org.mclogs.loghelper.LogHelper
+api-version: '1.15'
+description: A version of the mclo.gs plugin that is compatible with Paper servers.
+website: mclo.gs
+commands:
+  mclogs:
+    description: mclo.gs - Paste, share & analyse your Minecraft server logs
+    usage: /mclogs <list>

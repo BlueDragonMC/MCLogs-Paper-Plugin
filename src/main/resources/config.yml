@@ -1,0 +1,16 @@
+############################################################
+# +------------------------------------------------------+ #
+# |                       MCLOGS                         | #
+# +------------------------------------------------------+ #
+############################################################
+
+mclogs:
+  logname: latest
+  logdirectory: logs
+
+messages:
+  wrongcommand: "/mclogs <list>"
+  nopermission: "You don't have enough permissions to do that."
+  loguploaded: "Log uploaded to: "
+  logerror: "An error occured: "
+  fileerror: "The file '%FILE' does not exist."
