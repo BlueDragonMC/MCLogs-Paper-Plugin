@@ -14,14 +14,14 @@ public class LogInventory {
 
     public static int filecount = 0;
 
-    public LogInventory(LogHelper main) {
-        plugin = main;
-    }
+    // public LogInventory(LogHelper main) {
+    //     plugin = main;
+    // }
 
     public static void setup(Player p) {
         Inventory inv = plugin.openinv.get(p);
         if (inv != null) {
-            inv.setItem(45, Items.getItem(Material.WHITE_STAINED_GLASS_PANE, "", " "));
+            inv.setItem(45, Items.getItem(Material.WHITE_STAINED_GLASS_PANE, " ", " "));
             inv.setItem(46, Items.getItem(Material.WHITE_STAINED_GLASS_PANE, " ", " "));
             inv.setItem(47, Items.getItem(Material.WHITE_STAINED_GLASS_PANE, " ", " "));
             inv.setItem(48, Items.getItem(Material.WHITE_STAINED_GLASS_PANE, " ", " "));

@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,22 +17,20 @@ public class HTTPUtil {
   
   public static String analyzeFile(File f) {
     try {
-      StringBuilder param = new StringBuilder("content=");
-      param.append(URLEncoder.encode(readFile(f.getPath(), StandardCharsets.UTF_8), "UTF-8"));
       String url = "https://api.mclo.gs/1/log";
       URL obj = new URL(url);
       HttpsURLConnection con = (HttpsURLConnection)obj.openConnection();
       con.setRequestMethod("POST");
-      con.setRequestProperty("User-Agent", "Mozilla/5.0");
+      con.setRequestProperty("User-Agent", USER_AGENT);
       con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
       con.setDoInput(true);
       con.setDoOutput(true);
       OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
-      wr.write(param.toString());
+      wr.write("content=" + URLEncoder.encode(readFile(f.getPath()), "UTF-8"));
       wr.flush();
       wr.close();
       BufferedReader resp = new BufferedReader(new InputStreamReader(con.getInputStream()));
-      StringBuffer response = new StringBuffer();
+      StringBuilder response = new StringBuilder();
       String inputLine;
       while ((inputLine = resp.readLine()) != null)
         response.append(inputLine); 
@@ -45,8 +42,8 @@ public class HTTPUtil {
     } 
   }
   
-  static String readFile(String path, Charset encoding) throws IOException {
-    byte[] encoded = Files.readAllBytes(Paths.get(path, new String[0]));
-    return new String(encoded, encoding);
+  static String readFile(String path) throws IOException {
+    byte[] encoded = Files.readAllBytes(Paths.get(path));
+    return new String(encoded, StandardCharsets.UTF_8);
   }
 }

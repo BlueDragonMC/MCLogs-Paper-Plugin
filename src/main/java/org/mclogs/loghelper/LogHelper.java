@@ -8,7 +8,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.mclogs.loghelper.commands.MclogCommand;
 import org.mclogs.loghelper.listeners.InventoryListener;
-import org.mclogs.loghelper.utils.LogInventory;
 
 import java.io.File;
 import java.util.HashMap;
@@ -16,17 +15,17 @@ import java.util.HashMap;
 public class LogHelper extends JavaPlugin {
 
     public FileConfiguration config;
-    File temp = new File("./temp");
+    final File temp = new File("./temp");
 
-    public String prefix = ChatColor.BLUE + "[mclo.gs] " + ChatColor.GREEN;
-    public String errorprefix = ChatColor.BLUE + "[mclo.gs] " + ChatColor.RED;
+    public final String prefix = ChatColor.BLUE + "[mclo.gs] " + ChatColor.GREEN;
+    public final String errorprefix = ChatColor.BLUE + "[mclo.gs] " + ChatColor.RED;
 
-    public HashMap<Player, Inventory> openinv = new HashMap<>();
-    LogInventory loginv = new LogInventory(this);
+    public final HashMap<Player, Inventory> openinv = new HashMap<>();
 
     @Override
     public void onEnable() {
         if (!this.temp.exists())
+            //noinspection ResultOfMethodCallIgnored
             this.temp.mkdirs();
 
         saveDefaultConfig();
