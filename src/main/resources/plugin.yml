@@ -1,7 +1,7 @@
 name: mclo.gs
 version: ${project.version}
 main: org.mclogs.loghelper.LogHelper
-api-version: '1.15'
+api-version: '1.13'
 description: A version of the mclo.gs plugin that is compatible with Paper servers.
 website: mclo.gs
 commands:
